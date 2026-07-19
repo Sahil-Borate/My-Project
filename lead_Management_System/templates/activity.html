@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="text-primary mb-4">
+
+Activity Timeline
+
+</h2>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Lead ID</th>
+
+<th>Activity</th>
+
+<th>User</th>
+
+<th>Date & Time</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for activity in activities %}
+
+<tr>
+
+<td>{{ activity['id'] }}</td>
+
+<td>{{ activity['lead_id'] }}</td>
+
+<td>{{ activity['action'] }}</td>
+
+<td>{{ activity['user'] }}</td>
+
+<td>{{ activity['timestamp'] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

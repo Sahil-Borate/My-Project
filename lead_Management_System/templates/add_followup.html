@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="mb-4 text-primary">Add Follow-up</h2>
+
+<form method="POST">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">Lead ID</label>
+
+<input type="number"
+class="form-control"
+name="lead_id"
+required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">Counsellor Name</label>
+
+<input type="text"
+class="form-control"
+name="created_by"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">Follow-up Date</label>
+
+<input type="date"
+class="form-control"
+name="followup_date"
+required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">Follow-up Time</label>
+
+<input type="time"
+class="form-control"
+name="followup_time"
+required>
+
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Status</label>
+
+<select class="form-select" name="status">
+
+<option>Pending</option>
+<option>Completed</option>
+<option>Rescheduled</option>
+<option>Cancelled</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">Remarks</label>
+
+<textarea
+class="form-control"
+name="remarks"
+rows="4"></textarea>
+
+</div>
+
+<button class="btn btn-success">
+
+Save Follow-up
+
+</button>
+
+<a href="/followups" class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+{% endblock %}

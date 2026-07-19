@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>Lead List</h2>
+
+        <a href="/add" class="btn btn-success">
+            + Add Lead
+        </a>
+
+    </div>
+
+    <div class="mb-3">
+
+        <input
+            type="text"
+            id="searchInput"
+            onkeyup="searchLead()"
+            class="form-control"
+            placeholder="Search by Name, Mobile, Course">
+
+    </div>
+
+    <table class="table table-bordered table-hover" id="leadTable">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>City</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Counsellor</th>
+                <th>Created Date</th>
+                <th width="180">Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for lead in leads %}
+
+            <tr>
+
+                <td>{{ lead['id'] }}</td>
+                <td>{{ lead['name'] }}</td>
+                <td>{{ lead['mobile'] }}</td>
+                <td>{{ lead['email'] }}</td>
+                <td>{{ lead['course'] }}</td>
+                <td>{{ lead['city'] }}</td>
+                <td>{{ lead['source'] }}</td>
+                <td>{{ lead['status'] }}</td>
+                <td>{{ lead['counsellor'] }}</td>
+                <td>{{ lead['created_date'] }}</td>
+
+                <td>
+
+                    <a href="/edit/{{ lead['id'] }}"
+                       class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+
+                    <a href="/delete/{{ lead['id'] }}" class="btn btn-danger btn-sm">
+                         Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

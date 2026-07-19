@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Follow-up List</h2>
+
+    <a href="/followup" class="btn btn-success mb-3">
+        + Add Follow-up
+    </a>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Lead Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Remarks</th>
+                <th>Created By</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {% for f in followups %}
+
+            <tr>
+
+                <td>{{ f['id'] }}</td>
+
+                <td>{{ f['name'] }}</td>
+
+                <td>{{ f['followup_date'] }}</td>
+
+                <td>{{ f['followup_time'] }}</td>
+
+
+                <!-- Status Update -->
+
+                <td>
+
+                    <form action="/update_followup_status/{{ f['id'] }}" 
+                          method="POST">
+
+                        <select name="status" 
+                                class="form-select form-select-sm">
+
+                            <option value="Pending"
+                            {% if f['status']=="Pending" %}
+                            selected
+                            {% endif %}>
+                                Pending
+                            </option>
+
+
+                            <option value="Completed"
+                            {% if f['status']=="Completed" %}
+                            selected
+                            {% endif %}>
+                                Completed
+                            </option>
+
+
+                            <option value="Cancelled"
+                            {% if f['status']=="Cancelled" %}
+                            selected
+                            {% endif %}>
+                                Cancelled
+                            </option>
+
+
+                        </select>
+
+
+                        <button type="submit" 
+                                class="btn btn-success btn-sm mt-1">
+
+                            Update
+
+                        </button>
+
+                    </form>
+
+                </td>
+
+
+                <td>{{ f['remarks'] }}</td>
+
+
+                <td>{{ f['created_by'] }}</td>
+
+
+                <td>
+
+
+                    <a href="/edit_followup/{{ f['id'] }}"
+                       class="btn btn-primary btn-sm">
+
+                        Edit
+
+                    </a>
+
+
+                    <a href="/delete_followup/{{ f['id'] }}"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Delete this follow-up?')">
+
+                        Delete
+
+                    </a>
+
+
+                </td>
+
+
+            </tr>
+
+
+            {% endfor %}
+
+
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
+
+{% endblock %}

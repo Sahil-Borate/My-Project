@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<h2>Edit Follow-up</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Date</label>
+
+<input
+type="date"
+name="followup_date"
+value="{{ followup['followup_date'] }}"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Time</label>
+
+<input
+type="time"
+name="followup_time"
+value="{{ followup['followup_time'] }}"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Remarks</label>
+
+<textarea
+name="remarks"
+class="form-control">{{ followup['remarks'] }}</textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Status</label>
+
+<select
+name="status"
+class="form-select">
+
+<option {% if followup['status']=="Pending" %}selected{% endif %}>Pending</option>
+
+<option {% if followup['status']=="Completed" %}selected{% endif %}>Completed</option>
+
+<option {% if followup['status']=="Rescheduled" %}selected{% endif %}>Rescheduled</option>
+
+<option {% if followup['status']=="Cancelled" %}selected{% endif %}>Cancelled</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-primary">
+
+Update
+
+</button>
+
+<a href="/followups"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+</form>
+
+</div>
+
+{% endblock %}

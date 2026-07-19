@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+Edit Lead
+
+</h2>
+
+<form method="POST">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Name</label>
+
+<input
+type="text"
+name="name"
+class="form-control"
+value="{{ lead['name'] }}"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Mobile</label>
+
+<input
+type="text"
+name="mobile"
+class="form-control"
+value="{{ lead['mobile'] }}"
+required>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+value="{{ lead['email'] }}">
+
+</div>
+
+<div class="col-md-6">
+
+<label>Course</label>
+
+<input
+type="text"
+name="course"
+class="form-control"
+value="{{ lead['course'] }}">
+
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>City</label>
+
+<input
+type="text"
+name="city"
+class="form-control"
+value="{{ lead['city'] }}">
+
+</div>
+
+<div class="col-md-6">
+
+<label>Lead Source</label>
+
+<input
+type="text"
+name="source"
+class="form-control"
+value="{{ lead['source'] }}">
+
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Status</label>
+
+<select
+name="status"
+class="form-select">
+
+<option {% if lead['status']=="New Enquiry" %}selected{% endif %}>New Enquiry</option>
+
+<option {% if lead['status']=="Contacted" %}selected{% endif %}>Contacted</option>
+
+<option {% if lead['status']=="Interested" %}selected{% endif %}>Interested</option>
+
+<option {% if lead['status']=="Demo Scheduled" %}selected{% endif %}>Demo Scheduled</option>
+
+<option {% if lead['status']=="Admission Confirmed" %}selected{% endif %}>Admission Confirmed</option>
+
+<option {% if lead['status']=="Fees Paid" %}selected{% endif %}>Fees Paid</option>
+
+<option {% if lead['status']=="Student Enrolled" %}selected{% endif %}>Student Enrolled</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Counsellor</label>
+
+<input
+type="text"
+name="counsellor"
+class="form-control"
+value="{{ lead['counsellor'] }}">
+
+</div>
+
+</div>
+
+<br>
+
+<button
+type="submit"
+class="btn btn-primary">
+
+Update Lead
+
+</button>
+
+<a
+href="/leads"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="text-primary mb-4">
+
+Reports & Analytics
+
+</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card bg-primary text-white mb-3">
+
+<div class="card-body">
+
+<h5>Total Leads</h5>
+
+<h2>{{ total_leads }}</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-success text-white mb-3">
+
+<div class="card-body">
+
+<h5>Admissions</h5>
+
+<h2>{{ admissions }}</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-warning text-dark mb-3">
+
+<div class="card-body">
+
+<h5>Pending Leads</h5>
+
+<h2>{{ pending_leads }}</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+
+<h4>Lead Status Report</h4>
+
+<table class="table table-striped table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Lead ID</th>
+
+<th>Name</th>
+
+<th>Course</th>
+
+<th>Status</th>
+
+<th>Counsellor</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for lead in leads %}
+
+<tr>
+
+<td>{{ lead['id'] }}</td>
+
+<td>{{ lead['name'] }}</td>
+
+<td>{{ lead['course'] }}</td>
+
+<td>{{ lead['status'] }}</td>
+
+<td>{{ lead['counsellor'] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}
